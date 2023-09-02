@@ -19,6 +19,7 @@ createApp({
             const curr = x == '+' ? images[index + 1] || images[0] : images[index - 1] || images[images.length - 1];
             return active(curr);
         }
-        return { images, count, active, n }
+        const small = innerWidth <= 1023;
+        return { images, count, active, n, small }
     }
 }).mount('main');

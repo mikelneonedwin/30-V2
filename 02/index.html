@@ -33,7 +33,7 @@
             <div class="flex flex-col gap-4 lg:px-8">
                 <div>
                     <img :src="images.find(a => a.active).main" class="lg:rounded-xl sm:w-screen">
-                    <div class="lg:hidden absolute w-full -translate-y-64 px-3 material-icons">
+                    <div v-if="small" class="absolute w-full -translate-y-64 px-3 material-icons">
                         <button @click="n('-')" class="key">chevron_left</button>
                         <button @click="n('+')" class="float-right key">chevron_right</button>
                     </div>

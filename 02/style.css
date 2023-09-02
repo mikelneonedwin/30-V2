@@ -882,10 +882,6 @@ button.text-theme.text-2xl {
     display: grid;
   }
 
-  .lg\:hidden {
-    display: none;
-  }
-
   .lg\:w-\[45\%\] {
     width: 45%;
   }
