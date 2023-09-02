@@ -20,6 +20,12 @@ createApp({
             return active(curr);
         }
         const small = innerWidth <= 1023;
-        return { images, count, active, n, small }
+        const cart = reactive([]);
+        function calc(){
+            if(!count.value) return;
+            cart.push(count.value);
+            count.value = 0;
+        }
+        return { images, count, active, n, small, calc, cart }
     }
 }).mount('main');
