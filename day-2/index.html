@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./images/favicon-32x32.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Product Page</title>
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Kumbh+Sans">
+    <link rel="stylesheet" href="style.css">
+    <script src="/js/vue.prod.js"></script>
+    <link rel="stylesheet" href="/css/google-font.css">
+</head>
+<body>
+    <main class="lg:w-[80%] mx-auto">
+        <nav class="py-5 sm:px-4 sm:w-full z-20 items-center top-0 fixed bg-white border-b border-b-grayish-blue border-solid grid grid-cols-2">
+            <div class="flex lg:gap-8 sm:gap-4">
+                <img src="./images/icon-menu.svg" class="aspect-auto h-6">
+                <img src="./images/logo.svg" class="aspect-auto h-6">
+                <div class="flex sm:hidden gap-4 text-dark-grayish-blue">
+                    <a href="#">Collections</a>
+                    <a href="#">Men</a>
+                    <a href="#">Women</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="flex justify-end items-center gap-4">
+                <img src="./images/icon-cart.svg">
+                <img src="./images/image-avatar.png" class="h-11">
+            </div>
+        </nav>
+        <div class="mt-28 mb-8 lg:grid lg:grid-cols-2 sm:flex sm:flex-col lg:gap-4 sm:gap-8">
+            <div class="flex flex-col gap-4 lg:px-8">
+                <div>
+                    <img :src="images.find(a => a.active).main" class="lg:rounded-xl sm:w-screen">
+                    <div class="lg:hidden absolute w-full -translate-y-64 px-3 material-icons">
+                        <button @click="n('-')" class="key">chevron_left</button>
+                        <button @click="n('+')" class="float-right key">chevron_right</button>
+                    </div>
+                </div>
+                <div class="grid sm:hidden grid-cols-4 gap-8">
+                    <div @click="active(img)" v-for="img in images" :class="String(img.active)" :key="img.main" class="rounded-xl">
+                        <img :src="img.thumbnail" class="rounded-xl">
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="lg:w-[80%] sm:w-[90%] flex flex-col gap-4">
+                    <p class="font-bold text-theme tracking-wide">SNEAKER COMPANY</p>
+                    <h1 class="text-very-dark-blue text-4xl font-bold">Fall Limited Edition Sneakers</h1>
+                    <p class="text-dark-grayish-blue">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
+                    <div class="grid lg:grid-rows-2 sm:grid-cols-2 gap-1.5">
+                        <h3 class="text-very-dark-blue text-2xl font-bold flex gap-1.5 items-center">$125.00 <small class="text-sm text-theme bg-pale-orange px-2 rounded-lg font-semibold">50%</small></h3>
+                        <div class="sm:flex sm:justify-end">
+                            <span class="text-grayish-blue line-through">$250.00</span>
+                        </div>
+                    </div>
+                    <div class="w-full lg:flex sm:grid sm:grid-rows-2 lg:gap-2 sm:gap-4">
+                        <div class="lg:w-[45%] flex justify-evenly items-center bg-gray-100 rounded-lg font-bold text-lg">
+                            <button @click="--count == -1 && count++" class="text-theme text-2xl">-</button>
+                            <span>{{count}}</span>
+                            <button @click="count++" class="text-theme text-2xl">+</button>
+                        </div>
+                        <button class="lg:w-[55%] shadow-md shadow-theme bg-theme flex items-center justify-center gap-2 text-white font-semibold py-3 rounded-lg">
+                            <i class="material-icons">shopping_cart</i>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
