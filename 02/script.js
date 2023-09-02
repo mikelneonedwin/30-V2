@@ -26,6 +26,10 @@ createApp({
             cart.push(count.value);
             count.value = 0;
         }
-        return { images, count, active, n, small, calc, cart }
+        const showCart = ref(false);
+        const showNav = ref(innerWidth < 1024 ? false : true);
+        const ns = showNav.value;
+        function inv(){ if(!ns) showNav.value = !showNav.value; }
+        return { images, count, active, n, small, calc, cart, showCart, showNav, inv }
     }
 }).mount('main');
