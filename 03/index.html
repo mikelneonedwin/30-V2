@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage User Dashboard</title>
+    <link rel="stylesheet" href="/css/google-font.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/js/vue.prod.js"></script>
+    <script src="/js/chart.js"></script>
+</head>
+<body>
+    <nav class="max-w-full z-10 overflow-x-hidden grid grid-cols-2 xl:grid-cols-1 top-0 left-0 bottom-0 xl:max-w-[17%] fixed xl:w-full" :class="{'w-0': !showBar, 'w-full': showBar}">
+        <div class="pt-4 flex bg-white flex-col gap-6">
+            <div class="flex items-end -translate-x-2 justify-center gap-2">
+                <img class="h-10" src="favicon.ico">
+                <h3 class="text-2xl font-bold">Nuxi</h3>
+            </div>
+            <div @click="showBar = false" class="flex flex-col gap-1 px-3">
+                <a href="#"><i>dashboard</i>Dashboard</a>
+                <a href="#"><i>payment</i>Transaction</a>
+                <a href="#"><i>assignment</i>Tasks</a>
+                <a href="#" class="bg-gradient-to-r rounded-md text-white from-[#369EFF] to-[#65B6FF]"><i>description</i>Documents</a>
+                <a href="#"><i>store</i>Store</a>
+                <a href="#"><i>notifications</i>Notification</a>
+                <a href="#"><i>person</i>Profile</a>
+                <a href="#"><i>settings</i>Settings</a>
+                <div class="mt-4">
+                    <a href="#"><i>exit_to_app</i>Log Out</a>
+                </div>
+            </div>
+        </div>
+        <div @click="showBar = false" class="bg-black opacity-70 xl:hidden"></div>
+    </nav>
+    <main class="py-4 w-full xl:w-[83%] ml-auto px-4">
+        <div class="xl:grid xl:grid-cols-2 xl:items-center">
+            <h1 class="font-semibold text-2xl tracking-wide flex items-center gap-1.5"><i @click="showBar = !showBar" class="material-icons py-1 px-2 bg-white rounded-lg shadow-lg text-3xl xl:hidden">menu</i>Documents</h1>
+            <div class="xl:flex hidden gap-2 items-center justify-end">
+                <div class="inline-flex items-center rounded-xl gap-2 bg-white py-1 pl-4 pr-2">
+                    <input type="search" placeholder="Search" class="bg-inherit p-1 focus:outline-none">
+                    <button class="material-icons text-white bg-theme p-1 rounded-xl">search</button>
+                </div>
+                <div class="flex gap-2.5 items-center bg-white rounded-xl px-2 py-1">
+                    <img class="aspect-square h-8" src="../02/images/image-avatar.png">
+                    <h4 class="w-full">Jay Thompson</h4>
+                    <span class="material-icons">arrow_drop_down</span>
+                </div>
+            </div>
+        </div>
+        <section class="flex mt-8 flex-col gap-4 xl:flex-row">
+            <!--First bar-->
+            <div class="xl:w-[70%] flex flex-col gap-4">
+                <div class="grid items-center grid-cols-2">
+                    <h1 class="text-md font-semibold">My Files</h1>
+                    <div class="flex justify-end">
+                        <button class="btn text-xs"><i class="material-icons text-sm">add</i>Add New</button>
+                    </div>
+                </div>
+                <div class="grid grid-rows-4 xl:grid-rows-1 gap-4 xl:grid-cols-4">
+                    <div class="box">
+                        <div>
+                            <i class="bg-[#E5F3FF] text-[#0E8BFF]">insert_drive_file</i>
+                        </div>
+                        <h1>Documents</h1>
+                        <div>
+                            <progress min="0" value="6" class="bg-[#E5F3FF]" max="10"></progress>
+                            <div>
+                                <span>1,234 Files</span>
+                                <span>1.3GB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div>
+                            <i class="bg-[#FFF4E3] text-[#FF9500]">add_to_drive</i>
+                        </div>
+                        <h1>Google Drive</h1>
+                        <div>
+                            <progress min="0" class="bg-[#FFF4E3]" value="4" max="10"></progress>
+                            <div>
+                                <span>2,329 Files</span>
+                                <span>2.9GB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div>
+                            <i class="bg-[#E7ECF3] text-[#000C63]">cloud_done</i>
+                        </div>
+                        <h1>One Drive</h1>
+                        <div>
+                            <progress min="0" class="bg-[#E7ECF3]" value="8" max="10"></progress>
+                            <div>
+                                <span>1,015 Files</span>
+                                <span>1.7GB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div>
+                            <i class="bg-[#E7ECF3] text-[#3399EB]">all_inbox</i>
+                        </div>
+                        <h1>Dropbox</h1>
+                        <div>
+                            <progress min="0" class="bg-[#E7ECF3]" value="5" max="10"></progress>
+                            <div>
+                                <span>328 Files</span>
+                                <span>1.1GB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-rows-2 xl:grid-rows-1 gap-4 xl:grid-cols-2">
+                    <div class="p-4 xlx:col-span-2 flex flex-col gap-2 bg-white rounded-md">
+                        <div class="grid items-center grid-cols-2">
+                            <h2 class="text-lg font-medium">Recent Order</h2>
+                            <div class="flex items-center justify-end">
+                                <button class="py-1 flex rounded-md border-gray-300 px-4 border-solid border">See more</button>
+                            </div>
+                        </div>
+                        <table class="w-full">
+                            <tbody>
+                                <tr class="border-solid border-b border-b-gray-200">
+                                    <th v-for="e in tab" @click="sorter != e ? (sorter = e) : (sorter = false)" :class="{active: e == sorter}" :key="e">{{e}}</th>
+                                </tr>
+                                <tr class="odd:bg-[#F9FBFE]" v-for="item in sort" :key="item.txt">
+                                    <td class="py-3">
+                                        <span class="flex items-center gap-3">
+                                            <i class="material-icons text-white font-bold" :style="`background-color: #${item.col}`">{{item.icon}}</i>
+                                            <b class="font-medium">{{item.txt}}</b>
+                                        </span>
+                                    </td>
+                                    <td>{{item.date}}</td>
+                                    <td>{{item.size}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex flex-col bg-white p-4 rounded-md gap-4">
+                        <div class="grid grid-cols-2">
+                            <h2>Analytics</h2>
+                        </div>
+                        <div class="h-full">
+                            <canvas width="300px"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xl:w-[30%] flex flex-col  gap-4 bg-white rounded-md p-4">
+                <h2 class="text-lg font-semibold">Storage Details</h2>
+                <div>
+                    <canvas class="c-2"></canvas>
+                </div>
+                <div class="grid grid-rows-4 gap-4">
+                    <div class="desc">
+                        <i class="text-[#2496FF]">description</i>
+                        <div>
+                            <b>Document Files</b>
+                            <span>1,328 Files</span>
+                        </div>
+                        <span>1.38GB</span>
+                    </div>
+                    <div class="desc">
+                        <i class="text-[#20E3FF]">video_library</i>
+                        <div>
+                            <b>Media Files</b>
+                            <span>2,390 Files</span>
+                        </div>
+                        <span>15.3GB</span>
+                    </div>
+                    <div class="desc">
+                        <i class="text-[#FFCD1F]">folder_open</i>
+                        <div>
+                            <b>Other Files</b>
+                            <span>10,931 Files</span>
+                        </div>
+                        <span>12.7GB</span>
+                    </div>
+                    <div class="desc">
+                        <i class="text-[#EE2929]">folder_open</i>
+                        <div>
+                            <b>Unknown</b>
+                            <span>428 Files</span>
+                        </div>
+                        <span>0.97GB</span>
+                    </div>
+                    <div class="desc">
+                        <i class="text-[#FF32C5]">check_circle</i>
+                        <div>
+                            <b>Free</b>
+                            <!-- <span>428 Files</span> -->
+                        </div>
+                        <span>19.65GB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const { createApp, ref, reactive, computed, onMounted } = Vue;
+        createApp({
+            setup(){
+                const rdd = () => 1577836800000  + Math.floor(Math.random() * (1690848000000 - 1577836800000));
+                const rdds = (x) => (new Date(x)).toLocaleDateString().replaceAll("/", "-");
+                const fs = (x) => 1 + Math.floor(Math.random() * 100);
+                const ini = [
+                    { txt: "Xd File", col: 'FF32C5', icon: 'description' },
+                    { txt: "Figma File", col: 'FF4387', icon: 'file_present' },
+                    { txt: "Documents", col: 'FF3737', icon: 'file_copy' },
+                    { txt: "Sound File", col: 'FF7439', icon: 'audio_file' },
+                    { txt: "Media", col: 'FFA826', icon: 'perm_media' },
+                    { txt: "PDF", col: '00E593', icon: 'document_scanner' },
+                    { txt: "Excel File", col: '1AB7E9', icon: 'insert_drive_file' }
+                ];
+                ini.forEach(data => {
+                    const ts = rdd();
+                    const sizex = fs();
+                    Object.assign(data, { size: sizex + "mb", sizex, ts, date: rdds(ts) });
+                })
+                const sorter = ref(false);
+                const sort = computed(() => {
+                    const { value:val } = sorter;
+                    if(!val) return ini;
+                    if(val == "File Name") return ini.map(a => a.txt).sort().map(a => ini.find(b => b.txt == a));
+                    if(val == "Date") return Object.assign([], ini).sort((a,b) => b.ts - a.ts);
+                    if(val == "Size") return Object.assign([], ini).sort((a,b) => b.sizex - a.sizex);
+                    return ini;
+                })
+                const tab = ['File Name', 'Date', 'Size'];
+
+                function imp(){
+                    const ctx = document.querySelector("canvas");
+                    ctx.height = ctx.parentElement.offsetHeight + "px";
+                    ctx.width = ctx.parentElement.offsetWidth + "px";
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                            datasets: [{
+                                label: 'Traffic',
+                                backgroundColor: ini.map(a => '#' + a.col),
+                                data: [...Array(6).fill(0).map(() => 10 + Math.floor(Math.random() * 100))],
+                                borderWidth: 1
+                            }],
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        }
+                    })
+
+                    const cav = document.querySelector("canvas.c-2");
+                    new Chart(cav, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Documents', 'Media', 'Other', 'Unknown', 'Free'],
+                            datasets: [{
+                                label: 'Storage Details',
+                                data: [1.38, 15.3, 12.7, 0.97, 19.65 ],
+                                backgroundColor: ['#2496FF', '#20E3FF', '#FFCD1F', '#EE2929', '#FF32C5' ]
+                            }]
+                        }
+                    })
+                }
+                onMounted(imp);
+                const showBar = ref(innerWidth >= 1280);
+                return { sort, sorter, tab, showBar };
+            }
+        }).mount('body');
+    </script>
+</body>
+</html>
