@@ -715,10 +715,6 @@ video {
   margin-right: auto;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -1298,6 +1294,11 @@ progress:not(progress[class]) {
   background-color: rgb(246 246 246 / var(--tw-bg-opacity));
 }
 
+progress:not(progress[class])::-webkit-progress-bar {
+  --tw-bg-opacity: 1;
+  background-color: rgb(246 246 246 / var(--tw-bg-opacity));
+}
+
 progress[value="45"]::-moz-progress-bar {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1500,6 +1501,10 @@ td:last-child, th:last-child, th:nth-child(7), td:nth-child(7) {
     top: 4rem;
   }
 
+  .lg\:mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
   .lg\:inline-block {
     display: inline-block;
   }
@@ -1546,6 +1551,10 @@ td:last-child, th:last-child, th:nth-child(7), td:nth-child(7) {
 
   .lg\:grid-rows-2 {
     grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:items-center {
+    align-items: center;
   }
 
   .lg\:gap-2 {
