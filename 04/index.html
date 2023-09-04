@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Odama Studio</title>
+    <link rel="stylesheet" href="/css/google-font.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/js/chart.js"></script>
+</head>
+<body>
+    <header class="fixed shadow-lg bg-white p-4 top-0 grid grid-cols-2 left-0 right-0">
+        <h1 class="font-bold text-xl flex items-center gap-1"><i class="material-icons">leaderboard</i>Dashboard</h1>
+        <div class="flex gap-3 items-center justify-end">
+            <i class="material-icons hidden fade lg:inline-block -rotate-12">nightlight_round</i>
+            <i class="material-icons hidden lg:inline-block fade">notifications</i>
+            <div class="flex fade items-center border-l-2 gap-3 pl-2 border-solid border-gray-300">
+                Odama Studio
+                <img src="image-stand-out.jpg" class="h-8 rounded-full aspect-square">
+            </div>
+        </div>
+    </header>
+    <main class="flex flex-col mt-20 p-4 gap-4">
+        <div class="grid gap-4 grid-rows-4 lg:grid-rows-1 lg:grid-cols-4">
+            <div class="desc text-white bg-black">
+                <div>
+                    <div>
+                        <b>120</b>  
+                        <span>Total Menus</span>
+                    </div>
+                    <div>
+                        <span class="bg-[#333333]">description</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>0%</span>
+                        <span>45%</span>
+                    </div>
+                    <progress class="bg-[#333333]" min="0" value="45" max="100"></progress>
+                </div>
+            </div>
+            <div class="desc">
+                <div>
+                    <div>
+                        <b>180</b>
+                        <span>Total Orders Today</span>
+                    </div>
+                    <div>
+                        <span class="bg-[#CED1F4]">shopping_bag</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>0%</span>
+                        <span>62%</span>
+                    </div>
+                    <progress min="0" value="62" max="100"></progress>
+                </div>
+            </div>
+            <div class="desc">
+                <div>
+                    <div>
+                        <b>240</b>
+                        <span>Total Client Today</span>
+                    </div>
+                    <div>
+                        <span class="bg-[#E1E7E9]">groups</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>0%</span>
+                        <span>80%</span>
+                    </div>
+                    <progress min="0" value="80" max="100"></progress>
+                </div>
+            </div>
+            <div class="desc">
+                <div>
+                    <div>
+                        <b>140</b>
+                        <span>Revenue Day Ratio</span>
+                    </div>
+                    <div>
+                        <span class="bg-[#E5C1CD]">insert_chart</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>0%</span>
+                        <span>85%</span>
+                    </div>
+                    <progress min="0" value="85" max="100"></progress>
+                </div>
+            </div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-4 lg:grid-rows-1 grid-rows-2">
+            <div class="chart">
+                <div>
+                    <h1>Revenue</h1>
+                    <div>
+                        <div>
+                            <button class="active">Monthly</button>
+                            <button>Weekly</button>
+                            <button>Today</button>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="a1"></canvas>
+                <script>
+                    (() => {
+                        const ctx = document.getElementById("a1");
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                                datasets: [{
+                                    label: 'Expenses: 13k',
+                                    data: [5000, 8000, 9000, 12000]
+                                },
+                                {
+                                    label: 'Income: 18k',
+                                    data: [12500, 13000, 14900, 16000]
+                                }]
+                            }
+                        })
+                    })()
+                </script>
+            </div>
+            <div class="chart">
+                <div>
+                    <h1>Order Summary</h1>
+                    <div>
+                        <div>
+                            <button>Monthly</button>
+                            <button class="active">Weekly</button>
+                            <button>Today</button>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="a2"></canvas>
+                <script>
+                    (() => {
+                        const ctx = document.getElementById("a2");
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Jun 24', 'Jun 25', 'Jun 26', 'Jun 27'],
+                                datasets: [{
+                                    label: 'Order',
+                                    data: [5000, 8000, 9000, 12000],
+                                    backgroundColor: '#C5CAFF',
+                                    fill: false
+                                }]
+                            }
+                        })
+                    })()
+                </script>
+            </div>
+        </div>
+        <div class="bg-white rounded-md p-4">
+            <div class="grid items-center mb-6 grid-cols-2">
+                <h1 class="text-xl font-semibold">Order List</h1>
+                <div class="flex items-center justify-end">
+                    <div class="bg-bg px-1.5 py-1 rounded-md flex items-center gap-2">
+                        <button class="pt-0.5 pb-1 px-2.5 rounded-md bg-black text-white">Monthly</button>
+                        <button class="pt-0.5 pb-1 px-2.5">Weekly</button>
+                        <button class="pt-0.5 pb-1 px-2.5">Today</button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full whitespace-pre overflow-x-auto lg:whitespace-normal lg:overflow-hidden">
+                <table class="w-full">
+                    <tbody>
+                        <tr>
+                            <th>No</th>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Customer Name</th>
+                            <th>Location</th>
+                            <th>Amount</th>
+                            <th>Status Order</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>#12345</td>
+                            <td>Jan 24th, 2020</td>
+                            <td>Roberto Carlo</td>
+                            <td>Corner Street 5th Londo</td>
+                            <td>$34.20</td>
+                            <td>New Order</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>#12377</td>
+                            <td>Jan 28th, 2020</td>
+                            <td>Keith Jordan</td>
+                            <td>Burbbery Street 1st Londo</td>
+                            <td>$31.31</td>
+                            <td>On Delivery</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>#12412</td>
+                            <td>Feb 1st, 2020</td>
+                            <td>Rohmad Khoir</td>
+                            <td>Lando Street 5th Yogos</td>
+                            <td>$44.25</td>
+                            <td>On Delivery</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
