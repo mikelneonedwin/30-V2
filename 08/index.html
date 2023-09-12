@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="step-2">
-                    <p>The house picked</p>
+                    <p>We picked</p>
                     <div class="rounded-full p-[4.25rem] bg-[#192845]" v-if="!house"></div>
                     <div v-else>
                         <img :src="house">
@@ -58,7 +58,7 @@
                     <button @click="again" class="px-4 rounded-md bg-white py-1" :class="{'text-score-text': state == 'YOU WIN', 'text-red-400': state == 'YOU LOSE'}">PLAY AGAIN</button>
                 </div>
                 <div class="step-2">
-                    <p>The house picked</p>
+                    <p>We picked</p>
                     <div>
                         <img :src="house">
                     </div>
