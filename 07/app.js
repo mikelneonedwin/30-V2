@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const ctx = computed(() => {
                 return String(text.value).split(' ').map(val => {
                     if(!val.length) return ' ';
+                    if(val.includes('Infinity')) return val;
                     if(val.includes('.')) return val;
                     if(val.length < 3) return val;
                     return (String(val).split('').reverse().join('').match(/.{1,3}/g) || []).map(part => part.split('').reverse().join('')).reverse().join(',') ;
