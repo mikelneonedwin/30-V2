@@ -15,7 +15,9 @@ window.addEventListener('DOMContentLoaded', () => {
             })
 
             function sym(x){
-                if(text.value.charAt(text.value.length - 1) == " ") return;
+                const lastChar = text.value.charAt(text.value.length - 1);
+                if(text.value.length == 0 && x == '-') return text.value += '-';
+                if(lastChar == " ") return;
                 return text.value += ` ${x} `;
             }
 
