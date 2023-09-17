@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/js/vue.prod.js"></script>
+    <script src="app.js"></script>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg">
+    <main class="lg:h-screen px-4 pt-4 lg:pt-0 lg:px-0 flex mx-auto items-center justify-enter lg:w-[35%]">
+        <div class="flex flex-col w-full gap-4">
+            <div class="grid grid-cols-2 dark:text-white">
+                <h1 class="text-xl font-bold">calc</h1>
+                <div class="flex items-center gap-2 justify-end">
+                    <span>Light</span>
+                    <input v-model="theme" @change="cxl" type="checkbox" class="appearance-none bg-light-card-bg dark:bg-dark-keypad-bg h-4 w-8 rounded-lg py-2 px-1 flex items-center checked:before:ml-3.5">
+                    <span>Dark</span>
+                </div>
+            </div>
+            <div class="text-5xl bg-light-screen-bg dark:bg-dark-screen-bg rounded-md p-4 w-full truncate dark:text-white whitespace-pre text-right font-bold">{{ctx}}</div>
+            <div class="bg-light-card-bg dark:bg-dark-keypad-bg card rounded-md px-6 py-6 grid grid-cols-4 grid-rows-5 gap-4">
+                <button @click="adn(i)" v-for="i in [7,8,9]">{{i}}</button>
+                <button @click="text = text.slice(0,text.length - 1)" class="green">DEL</button>
+                <button @click="adn(i)" v-for="i in [4,5,6]">{{i}}</button>
+                <button @click="sym('+')">+</button>
+                <button @click="adn(i)" v-for="i in [1,2,3]">{{i}}</button>
+                <button @click="sym('-')">-</button>  
+                <button @click="dot">.</button>
+                <button @click="adn(0)">0</button>
+                <button @click="sym('/')">/</button>
+                <button @click="sym('*')">x</button>
+                <button @click="text = ''" class="col-span-2 green">RESET</button>
+                <button @click="text = String(eval(text))" class="col-span-2 !text-white !bg-light-key-toggle !shadow-light-key-orange-shadow dark:!bg-dark-key-toggle dark:!shadow-dark-key-red-shadow">=</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
